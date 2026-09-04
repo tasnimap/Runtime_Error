@@ -1,4 +1,5 @@
 'use client';
+// @dark-theme-applied
 
 import React, { useState } from 'react';
 import { CampusEvent, Registration } from '@/lib/types';
@@ -425,7 +426,7 @@ export function EventsSection({ events, onRefresh }: EventsSectionProps) {
                   placeholder="e.g. 20-40532"
                   value={regForm.student_id}
                   onChange={e => setRegForm({ ...regForm, student_id: e.target.value })}
-                  className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none"
+                  className="w-full px-3 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none text-slate-900 bg-white placeholder:text-slate-400 font-medium text-sm"
                 />
               </div>
 
@@ -437,7 +438,7 @@ export function EventsSection({ events, onRefresh }: EventsSectionProps) {
                   placeholder="e.g. Sakibul Hassan"
                   value={regForm.name}
                   onChange={e => setRegForm({ ...regForm, name: e.target.value })}
-                  className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none"
+                  className="w-full px-3 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none text-slate-900 bg-white placeholder:text-slate-400 font-medium text-sm"
                 />
               </div>
 
@@ -477,7 +478,7 @@ export function EventsSection({ events, onRefresh }: EventsSectionProps) {
                   placeholder="e.g. AUSTPIC AI Build Hackathon"
                   value={eventForm.name}
                   onChange={e => setEventForm({ ...eventForm, name: e.target.value })}
-                  className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none"
+                  className="w-full px-3 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none text-slate-900 bg-white placeholder:text-slate-400 font-medium text-sm"
                 />
               </div>
 
@@ -489,7 +490,7 @@ export function EventsSection({ events, onRefresh }: EventsSectionProps) {
                   placeholder="Brief description of the event..."
                   value={eventForm.description}
                   onChange={e => setEventForm({ ...eventForm, description: e.target.value })}
-                  className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none"
+                  className="w-full px-3 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none text-slate-900 bg-white placeholder:text-slate-400 font-medium text-sm"
                 />
               </div>
 
@@ -501,7 +502,7 @@ export function EventsSection({ events, onRefresh }: EventsSectionProps) {
                     required
                     value={eventForm.date}
                     onChange={e => setEventForm({ ...eventForm, date: e.target.value })}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none text-slate-900 bg-white placeholder:text-slate-400 font-medium text-sm"
                   />
                 </div>
                 <div>
@@ -511,7 +512,7 @@ export function EventsSection({ events, onRefresh }: EventsSectionProps) {
                     required
                     value={eventForm.end_date}
                     onChange={e => setEventForm({ ...eventForm, end_date: e.target.value })}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none text-slate-900 bg-white placeholder:text-slate-400 font-medium text-sm"
                   />
                 </div>
               </div>
@@ -525,7 +526,7 @@ export function EventsSection({ events, onRefresh }: EventsSectionProps) {
                     placeholder="14:00"
                     value={eventForm.start_time}
                     onChange={e => setEventForm({ ...eventForm, start_time: e.target.value })}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none text-slate-900 bg-white placeholder:text-slate-400 font-medium text-sm"
                   />
                 </div>
                 <div>
@@ -536,7 +537,7 @@ export function EventsSection({ events, onRefresh }: EventsSectionProps) {
                     placeholder="16:00"
                     value={eventForm.end_time}
                     onChange={e => setEventForm({ ...eventForm, end_time: e.target.value })}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none text-slate-900 bg-white placeholder:text-slate-400 font-medium text-sm"
                   />
                 </div>
               </div>
@@ -550,7 +551,7 @@ export function EventsSection({ events, onRefresh }: EventsSectionProps) {
                     placeholder="e.g. 7C05"
                     value={eventForm.venue}
                     onChange={e => setEventForm({ ...eventForm, venue: e.target.value })}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none text-slate-900 bg-white placeholder:text-slate-400 font-medium text-sm"
                   />
                 </div>
                 <div>
@@ -561,7 +562,7 @@ export function EventsSection({ events, onRefresh }: EventsSectionProps) {
                     placeholder="e.g. AUSTPIC, CSE Dept"
                     value={eventForm.organizer}
                     onChange={e => setEventForm({ ...eventForm, organizer: e.target.value })}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none text-slate-900 bg-white placeholder:text-slate-400 font-medium text-sm"
                   />
                 </div>
               </div>
@@ -575,7 +576,7 @@ export function EventsSection({ events, onRefresh }: EventsSectionProps) {
                     min={1}
                     value={eventForm.capacity}
                     onChange={e => setEventForm({ ...eventForm, capacity: Number(e.target.value) })}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none text-slate-900 bg-white placeholder:text-slate-400 font-medium text-sm"
                   />
                 </div>
                 <div>
@@ -583,7 +584,7 @@ export function EventsSection({ events, onRefresh }: EventsSectionProps) {
                   <select
                     value={eventForm.status}
                     onChange={e => setEventForm({ ...eventForm, status: e.target.value as CampusEvent['status'] })}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none text-slate-900 bg-white font-medium text-sm"
                   >
                     <option value="upcoming">Upcoming</option>
                     <option value="ongoing">Ongoing</option>

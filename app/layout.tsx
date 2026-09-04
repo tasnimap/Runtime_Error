@@ -3,7 +3,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'CampusOS — Intelligent University Operating System',
-  description: 'Intelligent campus data manager and AI agent powered by live university data.',
+  description: 'Centralizes campus schedules, events, and announcements with real-time updates and an AI assistant to help students access and manage campus info effortlessly.',
 };
 
 export default function RootLayout({
@@ -13,7 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-slate-50 text-slate-900 antialiased">
+      <body style={{ minHeight: '100vh', background: '#070912', color: '#e8edf5' }}>
         {children}
       </body>
     </html>

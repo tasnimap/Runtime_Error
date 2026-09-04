@@ -52,6 +52,7 @@ export function RoomsSection({ rooms, onRefresh }: RoomsSectionProps) {
   });
 
   const [deleteConfirmId, setDeleteConfirmId] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const filtered = rooms.filter(r => {
     const matchesType = selectedType === 'All' || r.type.toLowerCase() === selectedType.toLowerCase();
@@ -74,8 +75,8 @@ export function RoomsSection({ rooms, onRefresh }: RoomsSectionProps) {
 
   const handleBookSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!bookingRoom) return;
-
+    if (!bookingRoom || isSubmitting) return;
+    setIsSubmitting(true);
     try {
       const res = await fetch(`/api/rooms/${bookingRoom.id}/book`, {
         method: 'POST',
@@ -90,6 +91,8 @@ export function RoomsSection({ rooms, onRefresh }: RoomsSectionProps) {
       onRefresh();
     } catch (err: any) {
       showToast(err.message, 'error');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -385,7 +388,7 @@ export function RoomsSection({ rooms, onRefresh }: RoomsSectionProps) {
                   placeholder="e.g. Nusrat Jahan, AUSTPIC"
                   value={bookingForm.booked_by}
                   onChange={e => setBookingForm({ ...bookingForm, booked_by: e.target.value })}
-                  className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none"
+                  className="w-full px-3 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none text-slate-900 bg-white placeholder:text-slate-400 font-medium text-sm"
                 />
               </div>
 
@@ -396,7 +399,7 @@ export function RoomsSection({ rooms, onRefresh }: RoomsSectionProps) {
                   required
                   value={bookingForm.date}
                   onChange={e => setBookingForm({ ...bookingForm, date: e.target.value })}
-                  className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none"
+                  className="w-full px-3 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none text-slate-900 bg-white placeholder:text-slate-400 font-medium text-sm"
                 />
               </div>
 
@@ -410,7 +413,7 @@ export function RoomsSection({ rooms, onRefresh }: RoomsSectionProps) {
                     placeholder="15:00"
                     value={bookingForm.start_time}
                     onChange={e => setBookingForm({ ...bookingForm, start_time: e.target.value })}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none text-slate-900 bg-white placeholder:text-slate-400 font-medium text-sm"
                   />
                 </div>
                 <div>
@@ -422,7 +425,7 @@ export function RoomsSection({ rooms, onRefresh }: RoomsSectionProps) {
                     placeholder="17:00"
                     value={bookingForm.end_time}
                     onChange={e => setBookingForm({ ...bookingForm, end_time: e.target.value })}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none text-slate-900 bg-white placeholder:text-slate-400 font-medium text-sm"
                   />
                 </div>
               </div>
@@ -435,7 +438,7 @@ export function RoomsSection({ rooms, onRefresh }: RoomsSectionProps) {
                   placeholder="e.g. Extra Class, Workshop, Club Meeting"
                   value={bookingForm.purpose}
                   onChange={e => setBookingForm({ ...bookingForm, purpose: e.target.value })}
-                  className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none"
+                  className="w-full px-3 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none text-slate-900 bg-white placeholder:text-slate-400 font-medium text-sm"
                 />
               </div>
 
@@ -476,7 +479,7 @@ export function RoomsSection({ rooms, onRefresh }: RoomsSectionProps) {
                     placeholder="e.g. 7A08"
                     value={roomForm.room_number}
                     onChange={e => setRoomForm({ ...roomForm, room_number: e.target.value })}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none text-slate-900 bg-white placeholder:text-slate-400 font-medium text-sm"
                   />
                 </div>
                 <div>
@@ -484,7 +487,7 @@ export function RoomsSection({ rooms, onRefresh }: RoomsSectionProps) {
                   <select
                     value={roomForm.type}
                     onChange={e => setRoomForm({ ...roomForm, type: e.target.value as Room['type'] })}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none text-slate-900 bg-white font-medium text-sm"
                   >
                     <option value="classroom">Classroom</option>
                     <option value="lab">Lab</option>
@@ -502,7 +505,7 @@ export function RoomsSection({ rooms, onRefresh }: RoomsSectionProps) {
                     min={1}
                     value={roomForm.capacity}
                     onChange={e => setRoomForm({ ...roomForm, capacity: Number(e.target.value) })}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none text-slate-900 bg-white placeholder:text-slate-400 font-medium text-sm"
                   />
                 </div>
                 <div>
@@ -512,7 +515,7 @@ export function RoomsSection({ rooms, onRefresh }: RoomsSectionProps) {
                     required
                     value={roomForm.floor}
                     onChange={e => setRoomForm({ ...roomForm, floor: Number(e.target.value) })}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none text-slate-900 bg-white placeholder:text-slate-400 font-medium text-sm"
                   />
                 </div>
                 <div>
@@ -520,7 +523,7 @@ export function RoomsSection({ rooms, onRefresh }: RoomsSectionProps) {
                   <select
                     value={roomForm.status}
                     onChange={e => setRoomForm({ ...roomForm, status: e.target.value as Room['status'] })}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none text-slate-900 bg-white font-medium text-sm"
                   >
                     <option value="available">Available</option>
                     <option value="unavailable">Unavailable</option>
@@ -537,7 +540,7 @@ export function RoomsSection({ rooms, onRefresh }: RoomsSectionProps) {
                   placeholder="whiteboard, projector, AC, smart board"
                   value={roomForm.equipment}
                   onChange={e => setRoomForm({ ...roomForm, equipment: e.target.value })}
-                  className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none"
+                  className="w-full px-3 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none text-slate-900 bg-white placeholder:text-slate-400 font-medium text-sm"
                 />
               </div>
 

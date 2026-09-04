@@ -327,7 +327,7 @@ export function AssignmentsSection({ assignments, onRefresh }: AssignmentsSectio
                     placeholder="e.g. CSE 4113"
                     value={formData.course}
                     onChange={e => setFormData({ ...formData, course: e.target.value })}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none text-slate-900 bg-white placeholder:text-slate-400 font-medium text-sm"
                   />
                 </div>
                 <div>
@@ -338,7 +338,7 @@ export function AssignmentsSection({ assignments, onRefresh }: AssignmentsSectio
                     placeholder="Pattern Recognition"
                     value={formData.course_title}
                     onChange={e => setFormData({ ...formData, course_title: e.target.value })}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none text-slate-900 bg-white placeholder:text-slate-400 font-medium text-sm"
                   />
                 </div>
               </div>
@@ -351,7 +351,7 @@ export function AssignmentsSection({ assignments, onRefresh }: AssignmentsSectio
                   placeholder="e.g. Assignment 1: Naive Bayes Classifier"
                   value={formData.title}
                   onChange={e => setFormData({ ...formData, title: e.target.value })}
-                  className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none"
+                  className="w-full px-3 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none text-slate-900 bg-white placeholder:text-slate-400 font-medium text-sm"
                 />
               </div>
 
@@ -363,7 +363,7 @@ export function AssignmentsSection({ assignments, onRefresh }: AssignmentsSectio
                   placeholder="Instructions for the task..."
                   value={formData.description}
                   onChange={e => setFormData({ ...formData, description: e.target.value })}
-                  className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none"
+                  className="w-full px-3 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none text-slate-900 bg-white placeholder:text-slate-400 font-medium text-sm"
                 />
               </div>
 
@@ -375,7 +375,7 @@ export function AssignmentsSection({ assignments, onRefresh }: AssignmentsSectio
                     required
                     value={formData.assigned_date}
                     onChange={e => setFormData({ ...formData, assigned_date: e.target.value })}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none text-slate-900 bg-white placeholder:text-slate-400 font-medium text-sm"
                   />
                 </div>
                 <div>
@@ -385,7 +385,7 @@ export function AssignmentsSection({ assignments, onRefresh }: AssignmentsSectio
                     required
                     value={formData.deadline}
                     onChange={e => setFormData({ ...formData, deadline: e.target.value })}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none text-slate-900 bg-white placeholder:text-slate-400 font-medium text-sm"
                   />
                 </div>
               </div>
@@ -399,7 +399,7 @@ export function AssignmentsSection({ assignments, onRefresh }: AssignmentsSectio
                     placeholder="Google Classroom, Physical submission"
                     value={formData.submission_platform}
                     onChange={e => setFormData({ ...formData, submission_platform: e.target.value })}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none text-slate-900 bg-white placeholder:text-slate-400 font-medium text-sm"
                   />
                 </div>
                 <div>
@@ -410,7 +410,7 @@ export function AssignmentsSection({ assignments, onRefresh }: AssignmentsSectio
                     min={0}
                     value={formData.marks}
                     onChange={e => setFormData({ ...formData, marks: Number(e.target.value) })}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none text-slate-900 bg-white placeholder:text-slate-400 font-medium text-sm"
                   />
                 </div>
               </div>
@@ -420,7 +420,7 @@ export function AssignmentsSection({ assignments, onRefresh }: AssignmentsSectio
                 <select
                   value={formData.status}
                   onChange={e => setFormData({ ...formData, status: e.target.value as Assignment['status'] })}
-                  className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none"
+                  className="w-full px-3 py-2 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none text-slate-900 bg-white font-medium text-sm"
                 >
                   <option value="pending">Pending</option>
                   <option value="submitted">Submitted</option>

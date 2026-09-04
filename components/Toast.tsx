@@ -30,6 +30,30 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
     setToasts(prev => prev.filter(t => t.id !== id));
   };
 
+  const toastStyles: Record<string, React.CSSProperties> = {
+    success: {
+      background: 'rgba(7,9,18,0.95)',
+      border: '1px solid rgba(0,212,255,0.3)',
+      color: '#e8edf5',
+      boxShadow: '0 8px 32px rgba(0,0,0,0.5), 0 0 20px rgba(0,212,255,0.1)',
+      backdropFilter: 'blur(20px)',
+    },
+    error: {
+      background: 'rgba(7,9,18,0.95)',
+      border: '1px solid rgba(239,68,68,0.3)',
+      color: '#e8edf5',
+      boxShadow: '0 8px 32px rgba(0,0,0,0.5), 0 0 20px rgba(239,68,68,0.1)',
+      backdropFilter: 'blur(20px)',
+    },
+    info: {
+      background: 'rgba(7,9,18,0.95)',
+      border: '1px solid rgba(168,85,247,0.3)',
+      color: '#e8edf5',
+      boxShadow: '0 8px 32px rgba(0,0,0,0.5), 0 0 20px rgba(168,85,247,0.1)',
+      backdropFilter: 'blur(20px)',
+    },
+  };
+
   return (
     <ToastContext.Provider value={{ showToast }}>
       {children}
@@ -37,21 +61,20 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
         {toasts.map(toast => (
           <div
             key={toast.id}
-            className={`pointer-events-auto flex items-start gap-3 p-3.5 rounded-xl border shadow-lg text-sm transition-all duration-200 animate-in fade-in slide-in-from-bottom-2 ${
-              toast.type === 'success'
-                ? 'bg-emerald-950/90 border-emerald-700/50 text-emerald-100 shadow-emerald-950/30'
-                : toast.type === 'error'
-                ? 'bg-rose-950/90 border-rose-700/50 text-rose-100 shadow-rose-950/30'
-                : 'bg-slate-900/90 border-slate-700 text-slate-100 shadow-slate-950/30'
-            }`}
+            className="pointer-events-auto flex items-start gap-3 p-3.5 rounded-xl text-sm"
+            style={{ ...toastStyles[toast.type], borderRadius: '14px', padding: '12px 16px' }}
           >
-            {toast.type === 'success' && <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />}
-            {toast.type === 'error' && <AlertCircle className="w-5 h-5 text-rose-400 shrink-0 mt-0.5" />}
-            {toast.type === 'info' && <Info className="w-5 h-5 text-sky-400 shrink-0 mt-0.5" />}
-            <div className="flex-1 leading-snug">{toast.message}</div>
+            {toast.type === 'success' && <CheckCircle2 className="w-5 h-5 shrink-0 mt-0.5" style={{ color: '#00d4ff' }} />}
+            {toast.type === 'error' && <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" style={{ color: '#f87171' }} />}
+            {toast.type === 'info' && <Info className="w-5 h-5 shrink-0 mt-0.5" style={{ color: '#a855f7' }} />}
+            <div className="flex-1 leading-snug" style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px' }}>
+              {toast.message}
+            </div>
             <button
               onClick={() => removeToast(toast.id)}
-              className="text-slate-400 hover:text-white shrink-0 p-0.5"
+              style={{ color: '#4b5563' }}
+              onMouseEnter={e => (e.currentTarget.style.color = '#e8edf5')}
+              onMouseLeave={e => (e.currentTarget.style.color = '#4b5563')}
             >
               <X className="w-4 h-4" />
             </button>
